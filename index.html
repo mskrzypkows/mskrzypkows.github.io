@@ -1,0 +1,14 @@
+---
+bg: "jean-wimmerlin-passo-del-stelvio.jpg"
+layout: default
+crawlertitle: "Maciej Skrzypkowski's blog"
+title: "Gitcommit"
+summary: "My place on the web"
+---
+
+{% for post in site.posts limit: 5 %}
+  <article class="index-page">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    {{ post.excerpt }}
+  </article>
+{% endfor %}
