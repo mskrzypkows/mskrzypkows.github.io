@@ -54,6 +54,28 @@ From home's PC you run below command. It's worth to notice that we use work's PC
 ssh -p 2210 -i /location/of/the/key/key.pem worksPCLogin@abc-00-00-00-00.eu-central-1.compute.amazonaws.com
 {% endhighlight %}
 
+## Synchronization script
+
+For easy editing files, better do it locally and copy for work's PC. You can do it automatically using my [script](https://github.com/mskrzypkows/Copy-changed-files) :-)
+First mount work's PC home folder to some folder on home's PC, you will need `sshfs` installed and `Work` directory created.
+
+{% highlight bash %}
+sshfs -o IdentityFile=/location/of/the/key/key.pem -p 2210  worksPCLogin@abc-00-00-00-00.eu-central-1.compute.amazonaws.com:/home/username /home/username/Work
+{% endhighlight %}
+
+After adding execution rights:
+{% highlight bash %}
+chmod +x copy_changed_files.py
+{% endhighlight %}
+
+You can run my script sepcifying source and destination directory:
+{% highlight bash %}
+./copy_changed_files.py /home/usename/Projects/Project1 /home/username/Work/Projects/Project1
+{% endhighlight %}
+
+Script will scan source directory, remember all files modification time, if any file changes it will be copied to appropriate destination location.
+
+Good luck and have a fun! :]
 
 
 
